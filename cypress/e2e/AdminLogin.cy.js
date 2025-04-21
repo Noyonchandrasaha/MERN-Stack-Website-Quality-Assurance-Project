@@ -27,3 +27,28 @@ describe('TS_ALF_001', () => {
         })
     })
 })
+
+describe('TS_ALF_002', () => {
+    const testCases = [
+        {
+            name: 'TC_ALF_004',
+            email: 'noyon@example.com',
+            pass: 'Admin',
+            rememberMe: false
+        },
+        {
+            name: 'TC_ALF_005',
+            email: 'admin7@example.com',
+            pass: 'admin',
+            rememberMe: false
+        },
+    ]
+
+    testCases.forEach(({name, email, pass, rememberMe}) => {
+        it(name, () => {
+            cy.adminLogIn(email, pass, rememberMe)
+            cy.contains('Login failed: Invalid email or password.')
+        })
+    })
+
+})
